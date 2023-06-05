@@ -21,6 +21,8 @@ if __name__ == "__main__":
         print("File not found")
         exit()
 
+    start = time.time()
+
 
     for line in lines:
         num = int(line.strip())
@@ -28,6 +30,6 @@ if __name__ == "__main__":
         if factors:
             print(f"{num} = {factors[1]} * {factors[0]}")
 
-        if time.time() > 5:
+        if time.time() - start > 5:
             exit()
 
