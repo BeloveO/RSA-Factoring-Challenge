@@ -29,4 +29,3 @@ if __name__ == "__main__":
         factors = factorize(num)
         if factors:
             print(f"{num} = {factors[1]} * {factors[0]}")
-
