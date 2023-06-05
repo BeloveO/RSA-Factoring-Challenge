@@ -30,6 +30,3 @@ if __name__ == "__main__":
         if factors:
             print(f"{num} = {factors[1]} * {factors[0]}")
 
-        if time.time() - start > 5:
-            exit()
-
