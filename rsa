@@ -1,0 +1,55 @@
+#!/usr/bin/python3
+
+import sys
+import time
+import random
+from math import sqrt, ceil
+
+def prime(n):
+    if n < 2:
+        return False
+    for i in range(2, int(sqrt(n) + 1)):
+    	if n % i == 0:
+            return False
+    return True
+
+def primefactor(num):
+    pfactor = []
+    while num % 2 == 0:
+        pfactor.append(2)
+        num //= 2
+    i = 3
+    while i <= sqrt(num):
+        if (num % i == 0):
+            pfactor.append(i)
+            num /= i
+        else:
+            i += 2
+
+    if num > 2:
+        pfactor.append(num)
+    if len(pfactor) == 1:
+        p = pfactor[0]
+        q = num // p
+        return (p, q)
+
+    else:
+        pq = []
+        for factor in pfactor:
+            if prime(factor):
+                 pq.append(factor)
+            else:
+                p, q = primefactor(factor)
+                pq.append(p)
+                pq.append(q)
+        return tuple(pq)
+    
+input_file = sys.argv[1]
+
+
+with open(input_file, 'r') as file:
+    rsa = [int(line.strip()) for line in file.readlines()]
+
+for i in rsa:
+    p, q = primefactor(i)
+    print(f"{i}={q}*{p}")

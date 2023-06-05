@@ -21,9 +21,6 @@ if __name__ == "__main__":
         print("File not found")
         exit()
 
-    start = time.time()
-
-
     for line in lines:
         num = int(line.strip())
         factors = factorize(num)
